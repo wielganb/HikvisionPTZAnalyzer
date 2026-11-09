@@ -7,8 +7,12 @@ environment:
 java: 17
 scripts:
 - name: Set up properties
-script: echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties && echo "android.useAndroidX=true" >> gradle.properties && echo "android.enableJetifier=true" >> gradle.properties
+script: |
+echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+echo "android.useAndroidX=true" >> gradle.properties
+echo "android.enableJetifier=true" >> gradle.properties
 - name: Build Android APK
-script: gradle assembleDebug --no-daemon
+script: |
+gradle assembleDebug --no-daemon
 artifacts:
 - app/build/outputs/apk//*.apk
